@@ -40,4 +40,27 @@ The project includes a comprehensive analysis of:
 ### Prerequisites
 
 * Access to an HPC environment with MPI (e.g., OpenMPI, MPICH, or Cray-MPICH).
-* GCC or a
+* GCC or a similar C compiler.
+
+### Compilation
+
+Compile the desired implementation using `mpicc`. For example, to compile the Cyclic version:
+```bash
+mpicc -o mandelbrot_cp mandelbrot_cp_timed.c -lm
+```
+
+### Execution
+
+To run the program with 16 processes on a cluster:
+```bash
+mpirun -np 16 ./mandelbrot_cp
+```
+
+## Project Structure
+
+* **`mandelbrot_serial_timed.c`**: Baseline serial implementation.
+* **`mandelbrot_bp_timed.c`**: Static Block Parallel implementation.
+* **`mandelbrot_cp_timed.c`**: Cyclic Partitioning implementation.
+* **`mandelbrot_dyn_timed.c`**: Dynamic Master-Worker implementation.
+* **`Performance_Analysis_Parallel_Mandelbrot_Generation.pdf`**: Full technical report and performance results.
+* **`slurm_script.sh`**: Job submission script for the Setonix cluster.
